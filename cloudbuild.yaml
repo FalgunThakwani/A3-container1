@@ -16,7 +16,6 @@
       - |
         export CLOUDSDK_COMPUTE_REGION=	us-central1
         export CLOUDSDK_COMPUTE_ZONE=us-central1-a
-        export CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME
         gcloud container clusters get-credentials $_CLUSTER_NAME --region $CLOUDSDK_COMPUTE_REGION
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
