@@ -14,8 +14,8 @@ spec:
         app: container-1
     spec:
       containers:
-        - name: container-1/container-1:latest
-          image: gcr.io/csci5409-389802/app1
+        - name: container-1/container-1
+          image: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest
           ports: 
           - containerPort: 3000
           volumeMounts:
