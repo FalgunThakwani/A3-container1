@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: container-1
   namespace: container-1
+    labels:
+    app: container-1
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: container-1
@@ -25,3 +27,19 @@ spec:
       #   - name: data-volume
       #     persistentVolumeClaim:
       #       claimName: data-pvc
+---
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "nginx-1-hpa-barf"
+  namespace: "default"
+  labels:
+    app: "nginx-1"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "nginx-1"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
