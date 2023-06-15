@@ -4,7 +4,7 @@ metadata:
   name: container-1
   namespace: container-1
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: container-1
