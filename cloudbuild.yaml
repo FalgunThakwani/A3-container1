@@ -9,6 +9,16 @@
     args:
       - 'push'
       - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'container'
+      - 'clusters'
+      - 'get-credentials'
+      - 'csci5409a3'
+      - '--zone'
+      - 'us-central1-a'
+      - '--project'
+      - 'csci5409-389802'
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
