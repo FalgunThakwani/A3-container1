@@ -1,44 +1,60 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: container-01
+#   namespace: default
+#   labels:
+#     app: container-01
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       app: container-01
+#   template:
+#     metadata:
+#       labels:
+#         app: container-01
+#     spec:
+#       containers:
+#         - name: container-1
+#           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
+#           ports:
+#             - containerPort: 3000
+apiVersion: "apps/v1"
+kind: "Deployment"
 metadata:
-  name: container-01
-  namespace: default
+  name: "deploy-container1"
+  namespace: "default"
   labels:
-    app: container-01
+    app: "nginx-1"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: container-01
+      app: "nginx-1"
   template:
     metadata:
       labels:
-        app: container-01
+        app: "nginx-1"
     spec:
       containers:
-        - name: container-1
-          image: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
-          ports:
-            - containerPort: 3000
-# ---
-# apiVersion: autoscaling/v2
-# kind: HorizontalPodAutoscaler
-# metadata:
-#   name: container-1-hpa-barf
-#   namespace: default
-#   labels:
-#     app: container-1
-# spec:
-#   scaleTargetRef:
-#     kind: Deployment
-#     name: container-1
-#     apiVersion: apps/v1
-#   minReplicas: 1
-#   maxReplicas: 5
-#   metrics:
-#     - type: Resource
-#       resource:
-#         name: cpu
-#         target:
-#           type: Utilization
-#           averageUtilization: 80
+      - name: "container-1-sha256-1"
+        image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container-1@sha256:1de4b1ed5f71e4e56964a5f902795d31ee94daebbb0a99c531e24d369ae2c93d"
+        ports:
+          - containerPort: 3000
+---
+apiVersion: "autoscaling/v2"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "nginx-1-hpa-nkux"
+  namespace: "default"
+  labels:
+    app: "nginx-1"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "nginx-1"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
