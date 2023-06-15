@@ -26,7 +26,7 @@
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
-  waitFor:
+    waitFor:
     - deploy-gke
   substitutions:
     _RV: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest
