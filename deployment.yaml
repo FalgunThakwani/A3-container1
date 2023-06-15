@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: container-1
   namespace: container-1
-    labels:
+  labels:
     app: container-1
 spec:
   replicas: 3
@@ -18,15 +18,9 @@ spec:
       containers:
         - name: container-1
           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
-          ports: 
-          - containerPort: 3000
-      #     volumeMounts:
-      #       - name: data-volume
-      #         mountPath: /data
-      # volumes:
-      #   - name: data-volume
-      #     persistentVolumeClaim:
-      #       claimName: data-pvc
+          ports:
+            - containerPort: 3000
+---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -42,9 +36,9 @@ spec:
   minReplicas: 1
   maxReplicas: 5
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
