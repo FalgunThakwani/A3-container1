@@ -9,26 +9,6 @@
     args:
       - 'push'
       - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-    - '-c'
-    - |
-      export CLOUDSDK_COMPUTE_REGION=us-central1
-      export CLOUDSDK_COMPUTE_ZONE=us-central1-a
-      export CLOUDSDK_CONTAINER_CLUSTER=csci5409a3
-      echo "CLOUDSDK_COMPUTE_REGION=$CLOUDSDK_COMPUTE_REGION" >> $BUILDER_OUTPUT/substitutions.env
-      echo "CLOUDSDK_COMPUTE_ZONE=$CLOUDSDK_COMPUTE_ZONE" >> $BUILDER_OUTPUT/substitutions.env
-      echo "CLOUDSDK_CONTAINER_CLUSTER=$CLOUDSDK_CONTAINER_CLUSTER" >> $BUILDER_OUTPUT/substitutions.env
-      gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --region $CLOUDSDK_COMPUTE_REGION    
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - 'container'
-      - 'clusters'
-      - 'get-credentials'
-      - '$_CLUSTER_NAME'
-      - '--region'
-      - '$_COMPUTE_REGION'
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
