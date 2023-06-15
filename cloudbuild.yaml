@@ -21,7 +21,7 @@
     args:
     - set
     - image
-    - deployment/container1
+    - deployment/container-1
     - conatainer1=${_RV}
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_REGION}'
