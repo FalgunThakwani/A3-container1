@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: container-01
-  namespace: container-01
+  namespace: default
   labels:
     app: container-01
 spec:
