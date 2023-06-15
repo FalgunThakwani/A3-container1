@@ -14,7 +14,7 @@ spec:
         app: container-1
     spec:
       containers:
-        - name: container-1/container-1:latest'
+        - name: container-1:latest'
           image: gcr.io/csci5409-389802/app1
           ports: 
           - containerPort: 3000
