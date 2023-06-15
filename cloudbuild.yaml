@@ -1,14 +1,14 @@
   steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
-      - './'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args:
+  #     - 'build'
+  #     - '-t'
+  #     - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
+  #     - './'
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args:
+  #     - 'push'
+  #     - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
   - name: "gcr.io/cloud-builders/gke-deploy"
     id: deploy-gke
     args:
