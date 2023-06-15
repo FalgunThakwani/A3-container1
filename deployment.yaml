@@ -20,25 +20,25 @@ spec:
           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
           ports:
             - containerPort: 3000
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: container-1-hpa-barf
-  namespace: default
-  labels:
-    app: container-1
-spec:
-  scaleTargetRef:
-    kind: Deployment
-    name: container-1
-    apiVersion: apps/v1
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 80
+# ---
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: container-1-hpa-barf
+#   namespace: default
+#   labels:
+#     app: container-1
+# spec:
+#   scaleTargetRef:
+#     kind: Deployment
+#     name: container-1
+#     apiVersion: apps/v1
+#   minReplicas: 1
+#   maxReplicas: 5
+#   metrics:
+#     - type: Resource
+#       resource:
+#         name: cpu
+#         target:
+#           type: Utilization
+#           averageUtilization: 80
