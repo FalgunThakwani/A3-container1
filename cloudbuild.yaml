@@ -14,9 +14,12 @@
     args:
     - '-c'
     - |
-      echo "CLOUDSDK_COMPUTE_REGION=us-central1" >> $BASH_ENV
-      echo "CLOUDSDK_COMPUTE_ZONE=us-central1-a" >> $BASH_ENV
-      echo "CLOUDSDK_CONTAINER_CLUSTER=csci5409a3" >> $BASH_ENV
+      export CLOUDSDK_COMPUTE_REGION=us-central1
+      export CLOUDSDK_COMPUTE_ZONE=us-central1-a
+      export CLOUDSDK_CONTAINER_CLUSTER=csci5409a3
+      echo "CLOUDSDK_COMPUTE_REGION=$CLOUDSDK_COMPUTE_REGION" >> $BUILDER_OUTPUT/substitutions.env
+      echo "CLOUDSDK_COMPUTE_ZONE=$CLOUDSDK_COMPUTE_ZONE" >> $BUILDER_OUTPUT/substitutions.env
+      echo "CLOUDSDK_CONTAINER_CLUSTER=$CLOUDSDK_CONTAINER_CLUSTER" >> $BUILDER_OUTPUT/substitutions.env
       gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --region $CLOUDSDK_COMPUTE_REGION    
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
