@@ -16,18 +16,18 @@
       - --filename=deployment.yaml
       - --location=${_COMPUTE_REGION}
       - --cluster=${_CLUSTER_NAME}
-  # - name: 'gcr.io/cloud-builders/kubectl'
-  #   id: update-container-1
-  #   args:
-  #   - set
-  #   - image
-  #   - deployment/container-1
-  #   - conatainer1=${_RV}
-  #   env:
-  #   - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_REGION}'
-  #   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
-  #   waitFor:
-  #   - deploy-gke
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: update-container-1
+    args:
+    - set
+    - image
+    - deployment/container-1
+    - conatainer-1=${_RV}
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_REGION}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
+    waitFor:
+    - deploy-gke
   substitutions:
     _RV: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
     _CLUSTER_NAME: csci5409a3
