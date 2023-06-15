@@ -12,7 +12,8 @@
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
-      - '-f'
-      - './deployment.yaml'
-      - '--namespace'
-      - 'container-1'
+      - --filename = ./deployment.yaml
+      - --image = us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest
+      - --namespace = container-1
+      - --location = us-central1-c
+      - --cluster = csci5409a3
