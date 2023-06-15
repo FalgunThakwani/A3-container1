@@ -12,11 +12,7 @@
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-        export CLOUDSDK_COMPUTE_REGION=	us-central1
-        export CLOUDSDK_COMPUTE_ZONE=us-central1-a
-        gcloud container clusters get-credentials $_CLUSTER_NAME --region $CLOUDSDK_COMPUTE_REGION
+        gcloud container clusters get-credentials $_CLUSTER_NAME --region $_COMPUTE_REGION
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
