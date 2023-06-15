@@ -16,7 +16,7 @@
       - 'get-credentials'
       - 'csci5409a3'
       - '--zone'
-      - 'us-central1-a'
+      - 'us-central1'
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
