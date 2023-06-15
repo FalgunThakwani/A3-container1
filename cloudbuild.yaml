@@ -1,0 +1,23 @@
+  steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/csci5409-389802/my-artifact-registry/container-1/container-1:latest'
+      - './'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/csci5409-389802/my-artifact-registry/container-1/container-1:latest'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'deploy'
+      - 'container-1'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/csci5409-389802/my-artifact-registry/container-1/container-1:latest'
+      - '--cluster'
+      - 'csci5409a3'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'gke'

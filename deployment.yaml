@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: container-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: container-1
+  template:
+    metadata:
+      labels:
+        app: container-1
+    spec:
+      containers:
+        - name: container-1/container-1:latest'
+          image: gcr.io/csci5409-389802/app1
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: data-pvc
