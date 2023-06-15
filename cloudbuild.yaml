@@ -14,7 +14,7 @@
     args:
       - run
       - --filename=deployment.yaml
-      - --location=${_COMPUTE_ZONE}
+      - --location=${_COMPUTE_REGION}
       - --cluster=${_CLUSTER_NAME}
   - name: 'gcr.io/cloud-builders/kubectl'
     id: update-container-1
@@ -24,7 +24,7 @@
     - deployment/container1-deployment
     - conatainer1=${_RV}
     env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_ZONE}'
+    - 'CLOUDSDK_COMPUTE_ZONE=${_COMPUTE_REGION}'
     - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER_NAME}'
     waitFor:
     - deploy-gke
