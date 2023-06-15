@@ -38,8 +38,8 @@ spec:
         app: "nginx-1"
     spec:
       containers:
-      - name: "container-1-sha256-1"
-        image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container-1@sha256:1de4b1ed5f71e4e56964a5f902795d31ee94daebbb0a99c531e24d369ae2c93d"
+      - name: "container-1"
+        image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest"
         ports:
           - containerPort: 3000
 ---
