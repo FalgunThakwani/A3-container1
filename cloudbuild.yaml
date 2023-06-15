@@ -10,9 +10,13 @@
       - 'push'
       - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1/container-1:latest'
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
     args:
-        gcloud container clusters get-credentials $_CLUSTER_NAME --region $_COMPUTE_REGION
+      - 'container'
+      - 'clusters'
+      - 'get-credentials'
+      - '$_CLUSTER_NAME'
+      - '--zone'
+      - '$_COMPUTE_ZONE'
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
       - 'apply'
