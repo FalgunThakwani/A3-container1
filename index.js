@@ -20,9 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',(req,res) => {
 try{
 
-  const filePath = './falgun_PV_dir/file.dat';  // Replace with the desired file path within the PV
-
-  const fileContent = 'This is the \n content of the file.';
+  const filePath = './file.dat';
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -47,7 +45,7 @@ app.post('/store-file',async (req,res) => {
     if(!file || file==null || file===""){
       res.json({"file":file,"error":"Invalid JSON input"});
     }else{
-      const filePath = './falgun_PV_dir/'+file; 
+      const filePath = './'+file; 
       fs.writeFile(filePath, data,(err) => {
         if(err){
           const output = {
