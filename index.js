@@ -61,7 +61,7 @@ app.post('/store-file',async (req,res) => {
         if(err){
           const output = {
             "file": file,
-            "error": "Error while storing the file to the storage."
+            "error": err
           }
           res.status(500).send(output);
         }
