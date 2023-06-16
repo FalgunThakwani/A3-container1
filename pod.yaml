@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+meta-data:
+  name: po-pvc-kubetrain
+spec:
+  volumes:
+    - name: vol-pvc-kubetrain
+      persistentVolumeClaim:
+        claimName: pvc-kubetrain
+  containers:
+    - name: container101-sha256-1
+      image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
+      volumeMounts:
+      - mountPath: "/usr/src/app"
+        name: vol-pvc-kubetrain
+        

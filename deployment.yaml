@@ -1,26 +1,26 @@
 ---
 apiVersion: "apps/v1"
-kind: "Pod"
+kind: "Deployment"
 metadata:
-  name: "pod-1"
+  name: "nginx-1"
   namespace: "default"
   labels:
-    app: "pod-1"
+    app: "nginx-1"
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: "pod-1"
+      app: "nginx-1"
   template:
     metadata:
       labels:
-        app: "pod-1"
+        app: "nginx-1"
     spec:
       containers:
         - name: container101-sha256-1
           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
           volumeMounts:
-            - mountPath: "/usr/src/app"
+            - mountPath: "/falgun_PV_dir"
               name: app-storage
       volumes:
         - name: app-storage
@@ -30,14 +30,14 @@ spec:
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "pod-1-hpa-v2rt"
+  name: "nginx-1-hpa-v2rt"
   namespace: "default"
   labels:
-    app: "pod-1"
+    app: "nginx-1"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "pod-1"
+    name: "nginx-1"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
