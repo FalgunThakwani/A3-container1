@@ -20,9 +20,7 @@ spec:
       - name: container101-sha256-1
         image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
         volumeMounts:
-          - mountPath: volumeMounts:
-        - mountPath: /usr/src/app
-          name: app-storage
+          - mountPath: /usr/src/app
             name: app-storage
       volumes:
         - name: app-storage
