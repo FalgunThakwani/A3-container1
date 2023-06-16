@@ -55,11 +55,6 @@ app.post('/store-file',async (req,res) => {
           res.status(500).send(output);
         }
       });
-      const output = {
-        "file": "file.dat",
-        "message": "Success"
-      }
-      res.status(200).send(output);
     }
    }catch (err){
     console.log('Errorr:', err);
