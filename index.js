@@ -57,7 +57,15 @@ app.post('/store-file',async (req,res) => {
       res.json({"file":file,"error":"Invalid JSON input"});
     }else{
       const filePath = './falgun_PV_dir/'+file; 
-      fs.writeFile(filePath, data);
+      fs.writeFile(filePath, data,(err) => {
+        if(err){
+          const output = {
+            "file": file,
+            "error": "Error while storing the file to the storage."
+          }
+          res.status(500).send(output);
+        }
+      });
       const output = {
         "file": "file.dat",
         "message": "Success"
@@ -70,7 +78,7 @@ app.post('/store-file',async (req,res) => {
       "file": file,
       "error": "Error while storing the file to the storage."
     }
-    res.status(500).send('Internal Server Error');
+    res.status(500).send(output);
   }
   });
 
