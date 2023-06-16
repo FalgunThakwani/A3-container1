@@ -15,14 +15,14 @@
       - clusters
       - get-credentials
       - ${_CLUSTER_NAME}  
-      - --zone
-      - ${_COMPUTE_ZONE}
+      - --region
+      - ${_COMPUTE_REGION}
   - name: "gcr.io/cloud-builders/gke-deploy"
     id: deploy-gke
     args:
       - run
       - --filename=deployment.yaml
-      - --location=${_COMPUTE_ZONE}
+      - --location=${_COMPUTE_REGION}
       - --cluster=${_CLUSTER_NAME}
   # - name: 'gcr.io/cloud-builders/kubectl'
   #   id: update-container-1
@@ -38,5 +38,5 @@
   #   - deploy-gke
   substitutions:
     _RV: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
-    _CLUSTER_NAME: standard-cluster
-    _COMPUTE_ZONE: us-central1-c
+    _CLUSTER_NAME: csci5409-389802-gke
+    _COMPUTE_REGION: us-central1
