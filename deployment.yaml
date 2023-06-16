@@ -25,7 +25,7 @@ spec:
         image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest"
         volumeMounts:
           - mountPath: "./"
-          name: app-storage
+            name: app-storage
 ---
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
