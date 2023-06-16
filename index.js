@@ -21,7 +21,6 @@ app.get('/',(req,res) => {
 try{
 
   const filePath = './file.dat';
-
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.log('Error reading file:', err);
