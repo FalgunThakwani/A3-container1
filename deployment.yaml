@@ -16,10 +16,6 @@ spec:
       labels:
         app: "nginx-1"
     spec:
-      volumes:
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: my-pvc
       containers:
       - name: "container101-sha256-1"
         image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest"
