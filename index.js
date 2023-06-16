@@ -28,8 +28,10 @@ try{
       res.send("Error reading file:")
       return;
     }
-    console.log('File content:', data)});
+    console.log('File content:', data)
     res.send({"data":data});
+  });
+    
 
 }catch (err){
   console.log(err);
