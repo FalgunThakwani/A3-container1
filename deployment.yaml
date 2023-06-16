@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-container1
+  name: nginx-1
   namespace: default
   labels:
     app: nginx-1
