@@ -16,9 +16,16 @@ spec:
       labels:
         app: "nginx-1"
     spec:
+      volumes:
+        - name: app-storage
+          persistentVolumeClaim:
+            claimName: app-storage-claim
       containers:
       - name: "container101-sha256-1"
         image: "us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest"
+      volumeMounts:
+        - mountPath: "./"
+          name: app-storage
 ---
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
