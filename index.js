@@ -54,22 +54,22 @@ app.post('/store-file',async (req,res) => {
    let {file, data} = req.body;
    try{
     if(!file || file==null || file===""){
-      res.json({file:file,error:"Invalid JSON input"});
+      res.json({"file":file,"error":"Invalid JSON input"});
     }else{
-      fs.writeFileSync(fileName, data);
-      const bucketName = 'csci5408a3';
-
-      // await storage.bucket(bucketName).upload(fileName, {
-      //   destination: fileName,
-      // });
-      // const output = {	"file": "file.dat",
-      //   "message": "Success"
-      // }
-      console.log(`File ${fileName} uploaded to GKE persistent storage`);
+      const filePath = './falgun_PV_dir/'+file; 
+      fs.writeFile(filePath, data);
+      const output = {
+        "file": "file.dat",
+        "message": "Error while storing the file to the storage."
+      }
       res.status(200).send(output);
     }
    }catch (err){
     console.error('Error:', error);
+    const output = {
+      "file": file,
+      "message": "Success."
+    }
     res.status(500).send('Internal Server Error');
   }
   });
