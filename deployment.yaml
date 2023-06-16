@@ -27,23 +27,6 @@ spec:
 
 ---
 
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: my-pvc
-spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: standard
-  gcePersistentDisk:
-    pdName: my-pd
-    fsType: ext4
-
----
-
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
