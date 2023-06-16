@@ -107,7 +107,7 @@ spec:
         app: nginx-1
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101@sha256:cee74edd99f57d95dc054a0e61c230ec42c1ebeba8dff3fdbf074b9490fab163
+      - image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
         imagePullPolicy: IfNotPresent
         name: container101-sha256-1
         resources: {}
