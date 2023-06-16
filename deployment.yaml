@@ -20,7 +20,7 @@ spec:
       - name: container101-sha256-1
         image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
         volumeMounts:
-          - mountPath: "/var/www/html"
+          - mountPath: "/use/share/nginx/html"
             name: app-storage
       volumes:
         - name: app-storage
