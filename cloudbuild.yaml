@@ -14,7 +14,7 @@
       - container
       - clusters
       - get-credentials
-      - ${_CLUSTER_NAME}
+      - ${_CLUSTER_NAME}  
       - --zone
       - ${_COMPUTE_ZONE}
   - name: "gcr.io/cloud-builders/gke-deploy"
