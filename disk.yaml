@@ -21,20 +21,21 @@
 #   name: pv-falgun
 # spec:
 #   capacity:
-#     storage: 1Gi
+#     storage: 10Gi
 #   accessModes:
 #     - ReadWriteMany
 #   persistentVolumeReclaimPolicy: Retain
-#   storageClassName: standard
+#   # storageClassName: standard
 #   hostPath:
 #     path: "/falgun_PV_dir"
+# ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-falgun
+  name: my-pvc2
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: standard
   resources:
     requests:

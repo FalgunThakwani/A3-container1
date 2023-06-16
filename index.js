@@ -13,9 +13,42 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
+// app.get('/',(req,res) => {
+//   res.json('Everything is fine');
+// });
+
 app.get('/',(req,res) => {
-  res.json('Everything is fine');
+try{
+
+  const filePath = './falgun_PV_dir/file.dat';  // Replace with the desired file path within the PV
+
+  const fileContent = 'This is the \n content of the file.';
+
+  fs.writeFile(filePath, fileContent, (err) => {
+    if (err) {
+      console.error('Error writing file:', err);
+      res.send("Error writing file:")
+      return;
+    }
+    console.log('File written successfully.')
+  });
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading file:', err);
+      res.send("Error reading file:")
+      return;
+    }
+    console.log('File content:', data)});
+    res.send("File written successfully.")
+
+}catch (err){
+  console.log(err);
+  res.send({"FAILED":err})
+}
 });
+
+
 
 app.post('/store-file',async (req,res) => {
    let {file, data} = req.body;

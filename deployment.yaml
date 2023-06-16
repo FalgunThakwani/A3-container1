@@ -1,4 +1,3 @@
----
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
@@ -7,7 +6,7 @@ metadata:
   labels:
     app: "nginx-1"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: "nginx-1"
@@ -16,29 +15,13 @@ spec:
       labels:
         app: "nginx-1"
     spec:
+      volumes:
+        - name: app-storage
+          persistentVolumeClaim:
+            claimName: my-pvc2   
       containers:
-        - name: container101-sha256-1
+        - name: container101
           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
           volumeMounts:
             - mountPath: "/falgun_PV_dir"
               name: app-storage
-      volumes:
-        - name: app-storage
-          persistentVolumeClaim:
-            claimName: app-storage-claim        
----
-apiVersion: "autoscaling/v2"
-kind: "HorizontalPodAutoscaler"
-metadata:
-  name: "nginx-1-hpa-v2rt"
-  namespace: "default"
-  labels:
-    app: "nginx-1"
-spec:
-  scaleTargetRef:
-    kind: "Deployment"
-    name: "nginx-1"
-    apiVersion: "apps/v1"
-  minReplicas: 1
-  maxReplicas: 5
-  metrics:
