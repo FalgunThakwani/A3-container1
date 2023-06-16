@@ -60,7 +60,7 @@ app.post('/store-file',async (req,res) => {
       fs.writeFile(filePath, data);
       const output = {
         "file": "file.dat",
-        "message": "Error while storing the file to the storage."
+        "message": "Success"
       }
       res.status(200).send(output);
     }
@@ -70,7 +70,7 @@ app.post('/store-file',async (req,res) => {
       "file": file,
       "error": "Error while storing the file to the storage."
     }
-    res.status(500).send(output);
+    res.status(500).send('Internal Server Error');
   }
   });
 
