@@ -15,14 +15,6 @@ spec:
       labels:
         app: "nginx-1"
     spec:
-      volumes:
-        - name: app-storage
-          hostPath: 
-            path: /falgun_PV_dir
-            type: Directory 
       containers:
         - name: container101
           image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
-          volumeMounts:
-            - mountPath: "./"
-              name: app-storage
