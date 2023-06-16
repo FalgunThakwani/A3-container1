@@ -38,7 +38,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
   gcePersistentDisk:
-    pdName: my-pd
+    pdName: gke-standard-cluster-default-pool-c44131dd-krh0
     fsType: ext4
 
 ---
