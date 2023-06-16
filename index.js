@@ -6,9 +6,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 
 const fs = require('fs');
-const multer = require('multer');
-const { Storage } = require('@google-cloud/storage');
-const storage = new Storage();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,12 +26,12 @@ app.post('/store-file',async (req,res) => {
       fs.writeFileSync(fileName, data);
       const bucketName = 'csci5408a3';
 
-      await storage.bucket(bucketName).upload(fileName, {
-        destination: fileName,
-      });
-      const output = {	"file": "file.dat",
-        "message": "Success"
-      }
+      // await storage.bucket(bucketName).upload(fileName, {
+      //   destination: fileName,
+      // });
+      // const output = {	"file": "file.dat",
+      //   "message": "Success"
+      // }
       console.log(`File ${fileName} uploaded to GKE persistent storage`);
       res.status(200).send(output);
     }

@@ -1,14 +1,14 @@
   steps:
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args:
-  #     - 'build'
-  #     - '-t'
-  #     - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest'
-  #     - './'
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args:
-  #     - 'push'
-  #     - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest'
+      - './'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest'
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - container
@@ -37,6 +37,6 @@
   #   waitFor:
   #   - deploy-gke
   substitutions:
-    _RV: us-central1-docker.pkg.dev/csci5409-389802/docker/container-1:latest
-    _CLUSTER_NAME: standard-cluster-1
+    _RV: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
+    _CLUSTER_NAME: standard-cluster
     _COMPUTE_ZONE: us-central1-c
