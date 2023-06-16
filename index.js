@@ -24,23 +24,14 @@ try{
 
   const fileContent = 'This is the \n content of the file.';
 
-  fs.writeFile(filePath, fileContent, (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-      res.send("Error writing file:")
-      return;
-    }
-    console.log('File written successfully.')
-  });
-
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      console.error('Error reading file:', err);
+      console.log('Error reading file:', err);
       res.send("Error reading file:")
       return;
     }
     console.log('File content:', data)});
-    res.send("File written successfully.")
+    res.send({"data":data});
 
 }catch (err){
   console.log(err);
