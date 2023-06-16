@@ -1,6 +1,6 @@
 ---
 apiVersion: "apps/v1"
-kind: "Deployment"
+kind: "Pod"
 metadata:
   name: "nginx-1"
   namespace: "default"
@@ -17,11 +17,11 @@ spec:
         app: "nginx-1"
     spec:
       containers:
-      - name: container101-sha256-1
-        image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
-        volumeMounts:
-          - mountPath: "/use/share/nginx/html"
-            name: app-storage
+        - name: container101-sha256-1
+          image: us-central1-docker.pkg.dev/csci5409-389802/docker/container101:latest
+          volumeMounts:
+            - mountPath: "/usr/src/app"
+              name: app-storage
       volumes:
         - name: app-storage
           persistentVolumeClaim:
