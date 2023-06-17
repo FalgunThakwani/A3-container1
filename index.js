@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/',(req,res) => {
-  res.json('Everything is fine ');
+  res.json('Container 1 Running...');
 });
 
 // app.get('/',(req,res) => {
