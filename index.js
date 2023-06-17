@@ -13,30 +13,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-// app.get('/',(req,res) => {
-//   res.json('Everything is fine');
-// });
-
 app.get('/',(req,res) => {
-try{
+  res.json('Everything is fine');
+});
 
-  const filePath = './file.dat';
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.log('Error reading file:', err);
-      res.send("Error reading file:")
-      return;
-    }
-    console.log('File content:', data)
-    res.send({"data":data});
-  });
+// app.get('/',(req,res) => {
+// try{
+
+//   const filePath = './file.dat';
+//   fs.readFile(filePath, 'utf8', (err, data) => {
+//     if (err) {
+//       console.log('Error reading file:', err);
+//       res.send("Error reading file:")
+//       return;
+//     }
+//     console.log('File content:', data)
+//     res.send({"data":data});
+//   });
     
 
-}catch (err){
-  console.log(err);
-  res.send({"FAILED":err})
-}
-});
+// }catch (err){
+//   console.log(err);
+//   res.send({"FAILED":err})
+// }
+// });
 
 
 
