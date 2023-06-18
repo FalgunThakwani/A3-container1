@@ -46,16 +46,21 @@ app.post('/store-file',async (req,res) => {
     if(!file || file==null || file===""){
       res.json({"file":file,"error":"Invalid JSON input"});
     }else{
-      const filePath = './'+file; 
-      fs.writeFile(filePath, data,(err) => {
-        if(err){
-          const output = {
-            "file": file,
-            "error": err
-          }
-          res.status(500).send(output);
-        }
-      });
+      // const filePath = './'+file; 
+      // fs.writeFile(filePath, data,(err) => {
+      //   if(err){
+      //     const output = {
+      //       "file": file,
+      //       "error": err
+      //     }
+      //     res.status(500).send(output);
+      //   }
+      // });
+      const output = {
+        "file":file,
+        "message":"success"
+      }
+      res.send(output);
     }
    }catch (err){
     console.log('Errorr:', err);
@@ -67,7 +72,18 @@ app.post('/store-file',async (req,res) => {
   }
   });
 
-app.post('/calculate', (req, res) => {
+  app.post('/calculate', (req, res) => {
+    if(!file || file==null || file===""){
+      res.json({"file":file,"error":"Invalid JSON input"});
+    }
+    const output = {
+      "file":file,
+      "sum":"30"
+    }
+    res.send(output);
+  });
+
+app.post('/calcula', (req, res) => {
   const request = {
     hostname: 'container2',
     port: 3000,
